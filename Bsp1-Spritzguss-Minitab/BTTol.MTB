@@ -1,0 +1,22 @@
+Sample 480 'Ri' 'btRi';
+  Replace.
+Let 'yStern' = 'ANPASS1'+'btRi'
+Brief 0;
+Regress;
+  Response 'yStern';
+  Nodefault;
+  Continuous 'ESZ' 'NDH' 'NDZ' 'WTemp';
+  Categorical 'Typ';
+  Terms ESZ NDH NDZ WTemp Typ ESZ*NDH NDZ*WTemp NDZ*Typ;
+  Constant;
+  Effect;
+  Unstandardized.
+Name C26 "PANPASS2".
+Predict 'yStern';
+  Nodefault;
+  CPredictors 'P_ESZ' 'P_NDH' 'P_NDZ' 'P_WTemp' 'P_Typ';
+  PFITS 'PANPASS2'.
+Sample 2 'Ri'  'PeStern';
+  Replace.
+Let 'deltaStern' = 'PANPASS2'-('PANPASS1'+'PeStern')
+Stack 'deltaStern' 'Pdelta' 'Pdelta'
